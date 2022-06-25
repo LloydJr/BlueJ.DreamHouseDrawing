@@ -9,18 +9,20 @@ import java.awt.*;
 
 public class Square
 {
-    private int size;
+    private int length;
+    private int width;
     private int xPosition;
     private int yPosition;
     private String color;
     private boolean isVisible;
 
     /**
-     * Create a new square at default position with default color.
+     * Create a new rectangle at default position with default color.
      */
     public Square()
     {
-        size = 30;
+        length = 30;
+        width = 90;
         xPosition = 60;
         yPosition = 50;
         color = "red";
@@ -28,7 +30,7 @@ public class Square
     }
 
     /**
-     * Make this square visible. If it was already visible, do nothing.
+     * Make this rectangle visible. If it was already visible, do nothing.
      */
     public void makeVisible()
     {
@@ -37,7 +39,7 @@ public class Square
     }
 
     /**
-     * Make this square invisible. If it was already invisible, do nothing.
+     * Make this rectangle invisible. If it was already invisible, do nothing.
      */
     public void makeInvisible()
     {
@@ -46,7 +48,7 @@ public class Square
     }
 
     /**
-     * Move the square a few pixels to the right.
+     * Move the rectangle a few pixels to the right.
      */
     public void moveRight()
     {
@@ -54,7 +56,7 @@ public class Square
     }
 
     /**
-     * Move the square a few pixels to the left.
+     * Move the rectangle a few pixels to the left.
      */
     public void moveLeft()
     {
@@ -62,7 +64,7 @@ public class Square
     }
 
     /**
-     * Move the square a few pixels up.
+     * Move the rectangle a few pixels up.
      */
     public void moveUp()
     {
@@ -70,7 +72,7 @@ public class Square
     }
 
     /**
-     * Move the square a few pixels down.
+     * Move the rectangle a few pixels down.
      */
     public void moveDown()
     {
@@ -78,7 +80,7 @@ public class Square
     }
 
     /**
-     * Move the square horizontally by 'distance' pixels.
+     * Move the rectangle horizontally by 'distance' pixels.
      */
     public void moveHorizontal(int distance)
     {
@@ -88,7 +90,7 @@ public class Square
     }
 
     /**
-     * Move the square vertically by 'distance' pixels.
+     * Move the rectangle vertically by 'distance' pixels.
      */
     public void moveVertical(int distance)
     {
@@ -98,7 +100,7 @@ public class Square
     }
 
     /**
-     * Slowly move the square horizontally by 'distance' pixels.
+     * Slowly move the rectangle horizontally by 'distance' pixels.
      */
     public void slowMoveHorizontal(int distance)
     {
@@ -122,7 +124,7 @@ public class Square
     }
 
     /**
-     * Slowly move the square vertically by 'distance' pixels.
+     * Slowly move the rectangle vertically by 'distance' pixels.
      */
     public void slowMoveVertical(int distance)
     {
@@ -151,7 +153,8 @@ public class Square
     public void changeSize(int newSize)
     {
         erase();
-        size = newSize;
+        length = newSize;
+        
         draw();
     }
 
@@ -166,20 +169,20 @@ public class Square
     }
 
     /*
-     * Draw the square with current specifications on screen.
+     * Draw the rectangle with current specifications on screen.
      */
     private void draw()
     {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
             canvas.draw(this, color,
-                    new Rectangle(xPosition, yPosition, size, size));
+                    new Rectangle(xPosition, yPosition, length, width));
             canvas.wait(10);
         }
     }
 
     /*
-     * Erase the square on screen.
+     * Erase the rectangle on screen.
      */
     private void erase()
     {
